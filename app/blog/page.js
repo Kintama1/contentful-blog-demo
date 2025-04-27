@@ -45,11 +45,14 @@ export default function BlogPage() {
           <div key={post.sys.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
             {post.fields.featuredImage && (
               <div className="h-48 overflow-hidden">
-                <img 
-                  src={`https:${post.fields.featuredImage.fields.file.url}?w=600`} 
-                  alt={post.fields.featuredImage.fields.title || 'Featured image'} 
-                  className="w-full h-full object-cover"
-                />
+                // WITH THIS:
+                    <Image 
+                    src={`https:${post.fields.featuredImage.fields.file.url}?w=600`} 
+                    alt={post.fields.featuredImage.fields.title || 'Featured image'} 
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover"
+                    />
               </div>
             )}
             

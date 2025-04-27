@@ -32,7 +32,7 @@ export default function SingleBlogPost() {
         setLoading(false);
       } catch (error) {
         console.error('Error fetching blog post:', error);
-        setError("Couldn't load the blog post. Please try again later.");
+        setError("Could not load the blog post. Please try again later.");
         setLoading(false);
       }
     }
