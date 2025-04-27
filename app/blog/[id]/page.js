@@ -6,6 +6,8 @@ import { useParams } from 'next/navigation';
 import client from '@/lib/contentful';
 import BlogPost from '@/components/BlogPost';
 
+
+
 export default function SingleBlogPost() {
   // Use useParams instead of router.query
   const params = useParams();
@@ -59,7 +61,7 @@ export default function SingleBlogPost() {
   if (!post) return (
     <div className="text-center py-16 px-4">
       <h1 className="text-2xl font-bold text-gray-800">Blog post not found</h1>
-      <p className="mt-4 text-gray-600">The post you're looking for doesn't exist.</p>
+      <p className="mt-4 text-gray-600">The post you`&apos;`re looking for doesn`&apos;`t exist.</p>
       <Link href="/blog" className="mt-6 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
         Back to all posts
       </Link>

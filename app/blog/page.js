@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getBlogPost } from '@/lib/api';
+import Image from "next/image";
 
 export default function BlogPage() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -45,7 +46,6 @@ export default function BlogPage() {
           <div key={post.sys.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
             {post.fields.featuredImage && (
               <div className="h-48 overflow-hidden">
-                // WITH THIS:
                     <Image 
                     src={`https:${post.fields.featuredImage.fields.file.url}?w=600`} 
                     alt={post.fields.featuredImage.fields.title || 'Featured image'} 
