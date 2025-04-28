@@ -1,9 +1,8 @@
-// pages/blog/index.js
+// app/blog/page.js
 "use client";
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { getBlogPost } from '@/lib/api';
-import Image from "next/image";
+import BlogCard from '@/components/BlogCard';
 
 export default function BlogPage() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -43,43 +42,7 @@ export default function BlogPage() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogPosts.map(post => (
-          <div key={post.sys.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-            {post.fields.featuredImage && (
-              <div className="h-48 overflow-hidden">
-                    <Image 
-                    src={`https:${post.fields.featuredImage.fields.file.url}?w=600`} 
-                    alt={post.fields.featuredImage.fields.title || 'Featured image'} 
-                    width={600}
-                    height={400}
-                    className="w-full h-full object-cover"
-                    />
-              </div>
-            )}
-            
-            <div className="p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
-                {post.fields.title}
-              </h2>
-              
-              {post.fields.content && (
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  {post.fields.content.content[0]?.content[0]?.value?.substring(0, 100)}...
-                </p>
-              )}
-              
-              <div className="flex justify-between items-center">
-              <Link href={`/blog/${post.sys.id}`} className="text-blue-600 hover:text-blue-800 font-medium">
-                  Read more
-                </Link>
-                
-                {post.fields.publishDate && (
-                  <span className="text-sm text-gray-500">
-                    {new Date(post.fields.publishDate).toLocaleDateString()}
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
+          <BlogCard key={post.sys.id} post={post} />
         ))}
       </div>
     </div>

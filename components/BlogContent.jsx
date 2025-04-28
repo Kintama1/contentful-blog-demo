@@ -1,5 +1,6 @@
 // components/BlogContent.jsx
 import React from 'react';
+import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 
@@ -38,6 +39,38 @@ function BlogContent({ content }) {
         </blockquote>
       ),
       [BLOCKS.HR]: () => <hr className="my-8 border-gray-300" />,
+      [BLOCKS.EMBEDDED_ASSET] :(node) => {
+        const {data : {target: {sys, fields}}} = node;
+        if (sys.type === 'Asset' && fields.file && fields.file.contentType.startsWith('image/'))
+            {
+            const imageURL = fields.file.url;
+            const alt = fields.title || 'embeddeg image';
+            return (
+                <div className='my-8'>
+                <Image
+                src = {`https:${imageURL}`}
+                alt = {alt}
+                width = {800}
+                height = {450}
+                className='rounded-lg shadow-md'
+                />
+                {fields.description && (
+                    <p className='text-sm text-gray-500 mt-2 text-center italic'>
+                        {fields.description}
+                    </p>
+                )}
+                </div>
+            );
+        }
+        //fallback for non-image assets
+        return (
+            <p className='my-4 p-4 bg-gray-100 rounded-lg text-gray-700'>
+                Embedded asset: {fields?.title || 'Untitled'}
+            </p>
+
+        )
+
+      },
       [INLINES.HYPERLINK]: (node, children) => (
         <a 
           href={node.data.uri} 
@@ -48,7 +81,17 @@ function BlogContent({ content }) {
           {children}
         </a>
       ),
+    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+        const { data: { target: { sys, fields } } } = node;
+        return(
+            <div className="my-4 p-4 bg-gray-100 rounded-lg">
+            <p className="font-bold">{fields?.title || 'Embedded Entry'}</p>
+            {fields?.description && <p>{fields.description}</p>}
+          </div>
+        );
+    }
     },
+    
     renderMark: {
       [MARKS.BOLD]: (text) => <span className="font-bold">{text}</span>,
       [MARKS.ITALIC]: (text) => <span className="italic">{text}</span>,
