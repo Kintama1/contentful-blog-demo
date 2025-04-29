@@ -148,7 +148,7 @@ export default function BlogPage() {
       )}
       
       {!hasMore && blogPosts.length > 0 && (
-        <p className="text-center text-gray-600 mt-8">You`&apos;`ve reached the end!</p>
+        <p className="text-center text-gray-600 mt-8">You&apos;ve reached the end!</p>
       )}
     </div>
   );
