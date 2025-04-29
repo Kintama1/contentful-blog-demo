@@ -1,6 +1,5 @@
-// components/BlogPost.jsx
 import React from 'react';
-import BlogContent from './BlogContent';
+import RichContent from './RichContent';
 
 function BlogPost({ post }) {
   if (!post) return null;
@@ -28,7 +27,7 @@ function BlogPost({ post }) {
       )}
       
       <div className="mb-6">
-        <BlogContent content={post.fields.content} />
+        <RichContent content={post.fields.content} />
       </div>
       
       {post.fields.tags && post.fields.tags.length > 0 && (

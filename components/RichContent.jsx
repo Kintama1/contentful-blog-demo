@@ -1,10 +1,9 @@
-// components/BlogContent.jsx
 import React from 'react';
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 
-function BlogContent({ content }) {
+function RichContent({ content }) {
   if (!content) {
     return <div>No content available</div>;
   }
@@ -112,4 +111,4 @@ function BlogContent({ content }) {
   );
 }
 
-export default BlogContent;
+export default RichContent;

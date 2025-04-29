@@ -1,0 +1,139 @@
+/* ===== PROFILE IMAGE STYLES ===== */
+.bio-image-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+  
+  .bio-image {
+    border: 1pt solid #DF7C8E;
+    transition: transform 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  .bio-image:hover {
+    transform: translateY(-5px);
+    border: 2pt solid #DF7C8E;
+    box-shadow: 0 10px 15px rgba(223, 124, 142, 0.3);
+  }
+  
+  .bio-image-container::after {
+    content: 'Photo in Prague';
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(223, 124, 142, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  
+  .bio-image-container:hover::after {
+    opacity: 1;
+  }
+  
+  /* ===== CONTAINER LAYOUT ===== */
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* ===== BIO TEXT STYLES ===== */
+  .text-bio {
+    color: #342A21;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    padding: 1.8rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .text-bio:hover {
+    box-shadow: 0 6px 16px rgba(223, 124, 142, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .text-bio p {
+    margin-bottom: 1.2rem;
+  }
+  
+  .text-bio a {
+    color: #DF7C8E;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+  
+  .text-bio a:hover {
+    color: #c45f71;
+    border-bottom: 1px solid #c45f71;
+  }
+  
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #DF7C8E;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0.3);
+    width: 50%;
+    height: 2px;
+    background-color: #DF7C8E;
+    transition: transform 0.4s ease;
+  }
+  
+  .section-title:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+  
+  /* ===== SKILLS SECTION ===== */
+  .skills-section {
+    width: 100%;
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .skill-tag {
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    background-color: #DF7C8E;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+  }
+  
+  .skill-tag:hover {
+    transform: translateY(-2px);
+    background-color: #342A21;
+    box-shadow: 0 4px 8px rgba(52, 42, 33, 0.2);
+  }
